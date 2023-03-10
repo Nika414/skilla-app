@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'SF-Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./SFProDisplay-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'SF-Pro';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./SFProDisplay-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'SF-Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("./SFProDisplay-Semibold.ttf") format("truetype");
+}
