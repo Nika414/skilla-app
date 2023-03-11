@@ -16,3 +16,10 @@ li {
 button {
   cursor: pointer;
 }
+
+ul {
+  padding: 0;
+}
+
+@import url(./components/SideBar/SideBar.css);
+@import url(./components/Navigation/Navigation.css);
