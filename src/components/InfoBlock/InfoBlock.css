@@ -1,0 +1,47 @@
+.info-block {
+    display: flex;
+    margin-top: 10px;
+    margin: 20px 6.25% 28px auto;
+    width: fit-content;
+    gap: 48px;
+    align-items: center;
+}
+
+.info-block__balance-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 148%;
+    color: #899CB1;
+}
+
+.info-block__balance {
+    display: flex;
+    gap: 10px;
+    height: 45px;
+    background: #FFFFFF;
+    border-radius: 48px;
+    align-items: center;
+    justify-content: center;
+    width: 145px;
+}
+
+.info-block__balance-text_accent {
+    font-weight: 500;
+    color: black;
+}
+
+.info-block__balance-button {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+
+.info-block__balance-img:hover {
+    fill: #0024CB;
+}
+
+.info-block__balance-text_accent:hover {
+    color: #0024CB;
+}

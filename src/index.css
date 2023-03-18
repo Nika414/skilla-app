@@ -23,3 +23,8 @@ ul {
 
 @import url(./components/SideBar/SideBar.css);
 @import url(./components/Navigation/Navigation.css);
+@import url(./components/Header/Header.css);
+@import url(./components/Infographics/Infographics.css);
+@import url(./components/Main/Main.css);
+@import url(./components/InfoBlock/InfoBlock.css);
+@import url(./components/DatePicker/DatePicker.css);

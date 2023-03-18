@@ -1,0 +1,32 @@
+.infographics {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+
+.infographics__span {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 148%;
+    color: var(--my-color-var);
+}
+
+.infographics__bar {
+    background: #DEE6F5;
+    border-radius: 12px;
+    height: 6px;
+    width: 156px;
+    border-radius: 12px;
+}
+
+.infographics__bar::before {
+    display: block;
+    content: '';
+    background: var(--my-color-var);
+    border-radius: 12px 0px 0px 12px;
+    height: 6px;
+    width: 68px;
+}

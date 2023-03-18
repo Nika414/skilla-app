@@ -1,63 +1,80 @@
 import { useState } from 'react';
-import { ru } from 'date-fns/locale';
-import { format, setDefaultOptions } from 'date-fns';
 import styled from '@emotion/styled';
 import Select from 'react-dropdown-select';
-import Infographics from '../Infographics/Infographics';
-import search from '../../images/search.svg';
-import showMore from '../../images/show-more.svg';
-import avatar from '../../images/avatar.svg';
+import Calendar from './Calendar';
+import LeftArrow from './LeftArrow';
+import RightArrow from './RightArrow';
 
-setDefaultOptions({ locale: ru });
-
-function Header() {
-  const date = format(new Date(), 'EEEE dd MMM');
+function DatePicker() {
   const options = [
     {
       value: 0,
-      label: 'Все организации',
+      label: '3 дня',
     },
     {
       value: 1,
-      label: 'ООО Грузчиков Сервис Запад',
+      label: 'Неделя',
     },
     {
       value: 2,
-      label: 'ИП Митрофанов М.М.',
+      label: 'Месяц',
     },
     {
       value: 3,
-      label: 'ИП Иванов М.М.',
+      label: 'Год',
+    },
+    {
+      value: 4,
+      label: 'Указать даты',
     },
   ];
-  const [company, setCompany] = useState([options[0]]);
+  const [currentOption, setCurrentOption] = useState(0);
+  const [timePeriod, setTimePeriod] = useState([options[currentOption]]);
+
+  function handleRightArrow() {
+    if (currentOption === 4) {
+      setCurrentOption(0);
+      setTimePeriod([options[0]]);
+    } else {
+      setCurrentOption((prev) => prev + 1);
+      setTimePeriod([options[currentOption + 1]]);
+    }
+  }
+
+  function handleLeftArrow() {
+    if (currentOption === 0) {
+      setCurrentOption(4);
+      setTimePeriod([options[4]]);
+    } else {
+      setCurrentOption((prev) => prev - 1);
+      setTimePeriod([options[currentOption - 1]]);
+    }
+  }
 
   return (
-    <header className="header">
-      <div className="header__date">{date}</div>
-      <Infographics text="Новые звонки " color="#28A879" accentText="20 из 30 шт" />
-      <Infographics text="Качество разговоров " color="#FFD500" accentText="40%" />
-      <Infographics text="Конверсия в заказ " color="#EA1A4F" accentText="67%" />
-      <img className="header__search-logo" src={search} alt="Поиск" />
-      <button type="button" className="header__organization-container">
-        {/* <span className="header__organization">ИП Сидорова Александра Михайловна</span> */}
+    <div className="date-picker">
+      <button type="button" className="date-picker__button" onClick={handleLeftArrow}>
+        <LeftArrow />
+      </button>
+      <button type="button" className="date-picker__button date-picker__button_calendar">
+        <Calendar />
         <StyledSelect
-          className="header__organization"
           options={options}
           onChange={(item) => {
-            setCompany(item);
+            setTimePeriod(item);
+            setCurrentOption(item[0].value);
           }}
-          values={company}
+          values={timePeriod}
         />
-        <img src={showMore} alt="Раскрыть" className="header__show-more" />
+        {/* <span className="date-picker__text"> 3 дня </span> */}
       </button>
-      <div className="header__avatar-container">
-        <div className="header__avatar" style={{ backgroundImage: `url(${avatar})` }} />
-        <button type="button" aria-label="Раскрыть" style={{ backgroundImage: `url(${showMore})` }} className="header__show-more" />
-      </div>
-    </header>
+      <button type="button" className="date-picker__button" onClick={handleRightArrow}>
+        <RightArrow />
+      </button>
+    </div>
   );
 }
+
 const StyledSelect = styled(Select)`
 background: transparent;
   border: none !important;
@@ -69,7 +86,7 @@ background: transparent;
   cursor: pointer !important;
   .react-dropdown-select-clear,
   .react-dropdown-select-dropdown-handle {
-    background: url('../../images/show-more.svg');
+    display: none;
   }
   .react-dropdown-select-option {
     border: none;
@@ -136,4 +153,4 @@ background: transparent;
   }
 `;
 
-export default Header;
+export default DatePicker;
